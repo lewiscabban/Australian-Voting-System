@@ -1,0 +1,12 @@
+<h1>thankyou for your vote!</h1>
+
+<%= link_to 'Home', '/' %>
+
+<p><%= @voter.name %></p>
+
+<% if @res == nil then %>
+  <p>Error: vote not valid</p>
+<% else %>
+  <p>Vote submitted</p>
+<% end %>
+

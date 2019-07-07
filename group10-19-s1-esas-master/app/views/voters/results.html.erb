@@ -1,0 +1,16 @@
+<header>
+  <h1>2019 Federal Election</h1>
+</header>
+
+<hr>
+
+<h3>Final Results</h3>
+
+<p><b>First:</b>    <%= Candidate.find(@results[0]).name %>, with <%= @score[0] %> votes</p>
+<p><b>Second:</b>    <%= Candidate.find(@results[1]).name %>, with <%= @score[1] %> votes</p>
+<p><b>Third:</b>    <%= Candidate.find(@results[2]).name %>, with <%= @score[2] %> votes</p>
+<p><b>Fourth:</b>    <%= Candidate.find(@results[3]).name %>, with <%= @score[3] %> votes</p>
+<p><b>Fifth:</b>    <%= Candidate.find(@results[4]).name %>, with <%= @score[4] %> votes</p>
+<p><b>Sixth:</b>    <%= Candidate.find(@results[5]).name %>, with <%= @score[5] %> votes</p>
+
+<%= link_to 'Home', '/' %>

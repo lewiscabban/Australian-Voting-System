@@ -1,0 +1,72 @@
+
+<header>
+  <h1>Voting Ballot 2019 Federal Election</h1>
+  
+  <p>you are logged in as <%= @voter.name%></p>
+</header>
+
+<hr>
+  
+<div class="parties">
+  <h3>Parties</h3>
+
+  <form action="/voters/party/party_submit" >
+    
+    
+    <%= hidden_field_tag :id, @id %>
+    <%= hidden_field_tag :vote_type, 'party' %>
+
+    <% @partys.each do |party| %>
+      <div class="party">
+        <p class="sub-title"><%= party.name %></p>
+        
+        <select name="pvote[<%= party.id%>]">
+          <option value="0">Not Selected</option>
+          <% (1..@partys.count).each do |pnum| %>
+            <option value="<%= pnum %>"><%= pnum %></option>
+          <% end %>
+        </select>
+      </div>
+    <% end %>
+    <input type="submit" value="Submit(party)">
+  </form>
+</div>
+
+<hr>
+
+<div class="candidates">
+  <% i = 1 %>
+  <h3>Candidates</h3>
+
+  <form action="/voters/candidate/candidate_submit">
+    <% @partys.each do |party| %>
+      <div class="party">
+        <p class="sub-title"><%= party.name %></p>
+        
+	<%= hidden_field_tag :id, @id %>
+	<%= hidden_field_tag :vote_type, 'candidate' %>
+
+        <% @candidates.each do |candidate| %>
+          <% if candidate.party_id == party.id %>
+            <div class="candidate">
+              <p><%= candidate.name %></p>
+              
+              <select name="cvote[<%= candidate.id%>]">
+                <option value="0">Not Selected</option>
+                <% (1..@candidates.count).each do |cnum| %>
+                  <option value="<%= cnum %>"><%= cnum %></option>
+                <% end %>
+              </select>
+            </div>
+          <% end %>
+        <% end %>
+        <% i = i + 1 %>
+      </div>
+    <% end %>
+    <input type="submit" value="Submit(candidate)">
+  </form>
+</div>
+
+
+<hr>
+<%= link_to 'Home', '/' %>

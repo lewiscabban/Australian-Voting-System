@@ -1,0 +1,39 @@
+
+<header>
+  <h1>Voting Ballot 2019 Federal Election</h1>
+  
+  <p>please select you name or continue as admin</p>
+</header>
+
+<hr>
+
+<p><%= link_to 'Continue as Admin', candidates_url %></p>
+<p><%= link_to 'Results', voter_url(:id => 1)+'/results' %></p>
+
+<hr>
+  
+<div class="voters">
+  <h3>Voters</h3>
+  
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</td>
+        <th></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @voters.each do |voter| %>
+        <tr>
+          <td><%= voter.name %></td>
+          <td><%= link_to 'vote', voter_url(:id => voter.id)+'/vote' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <tbody>
+      
+      
+  </tbody>
+</div>
